@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">L</div>
+        <div>
+          <h1>Library System</h1>
+          <p>Entry • Admin • Supervisor</p>
+        </div>
+      </div>
+
+      <div class="menu-title">Menu</div>
+      <button class="menu-btn active" data-target="entryPanel">Entry</button>
+      <button class="menu-btn" data-target="adminPanel">Admin</button>
+      <button class="menu-btn" data-target="supervisorPanel">Supervisor</button>
+
+      <div class="side-card">
+        <h3>Today</h3>
+        <p id="liveDate">--</p>
+        <p id="liveTime">--:--:--</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h2>Library Management System</h2>
+          <p>Enter the ID to view person details instantly.</p>
+        </div>
+        <div class="badge">USTU Library management</div>
+      </header>
+
+      <!-- ENTRY PANEL -->
+      <section class="panel active" id="entryPanel">
+        <div class="board">
+          <div class="left-box">
+            <h3>Student / Staff Entry</h3>
+            <p>Enter the 8-character college ID number</p>
+
+            <div class="search-row">
+              <input type="text" id="idInput" maxlength="8" placeholder="Enter ID like LIB12345" />
+              <button id="searchBtn">Search</button>
+            </div>
+
+            <div class="details-grid">
+              <div class="detail">
+                <span>Name</span>
+                <strong id="nameField">—</strong>
+              </div>
+              <div class="detail">
+                <span>DOB</span>
+                <strong id="dobField">—</strong>
+              </div>
+              <div class="detail">
+                <span>In Time</span>
+                <strong id="inTimeField">—</strong>
+              </div>
+              <div class="detail">
+                <span>Out Time</span>
+                <strong id="outTimeField">—</strong>
+              </div>
+              <div class="detail">
+                <span>Registration Number</span>
+                <strong id="regField">—</strong>
+              </div>
+              <div class="detail">
+                <span>Status</span>
+                <strong id="statusField">—</strong>
+              </div>
+            </div>
+
+            <p class="message" id="entryMessage">Search an ID to show details.</p>
+
+            <div class="actions">
+              <button class="primary" id="markInBtn">Mark In</button>
+              <button class="secondary" id="markOutBtn">Mark Out</button>
+              <button class="ghost" id="clearBtn">Clear</button>
+            </div>
+          </div>
+
+          <div class="right-box">
+            <div class="media-box photo-box" id="photoBox">
+              <span>Face Photo</span>
+            </div>
+            <p class="valid">Valid Upto: <span id="validField">—</span></p>
+            <div class="media-box sign-box" id="signBox">
+              <span>Signature Photo</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADMIN PANEL -->
+      <section class="panel" id="adminPanel">
+        <div class="board two-col">
+          <div class="card">
+            <h3>Admin Panel</h3>
+            <p>Add new admission data</p>
+
+            <form id="addPersonForm" class="form-grid">
+              <div class="form-group">
+                <label>8 Character ID</label>
+                <input type="text" id="newId" maxlength="8" placeholder="LIB00001" required />
+              </div>
+
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="newName" placeholder="Student Name" required />
+              </div>
+
+              <div class="form-group">
+                <label>DOB</label>
+                <input type="date" id="newDob" required />
+              </div>
+
+              <div class="form-group">
+                <label>Department / Role</label>
+                <input type="text" id="newRole" placeholder="B.Tech CSE / Faculty" required />
+              </div>
+
+              <div class="form-group">
+                <label>Valid Upto</label>
+                <input type="date" id="newValidUpto" required />
+              </div>
+
+              <div class="form-group">
+                <label>Registration Number</label>
+                <input type="text" id="newReg" placeholder="REG-1001" required />
+              </div>
+
+              <div class="form-group full">
+                <label>Face Photo</label>
+                <input type="file" id="newPhotoFile" accept="image/*" />
+                <div class="mini-preview" id="newPhotoPreview">No photo selected</div>
+              </div>
+
+              <div class="form-group full">
+                <label>Signature Photo</label>
+                <input type="file" id="newSignFile" accept="image/*" />
+                <div class="mini-preview" id="newSignPreview">No signature selected</div>
+              </div>
+
+              <div class="form-group full">
+                <button class="primary" type="submit">Add Person</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3>Notice Board</h3>
+            <p>Add new notice for display</p>
+
+            <textarea id="noticeText" rows="6" placeholder="Write notice here..."></textarea>
+            <button class="primary mt" id="addNoticeBtn">Publish Notice</button>
+
+            <div class="list-box">
+              <h4>Registered People</h4>
+              <div id="recordList" class="list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SUPERVISOR PANEL -->
+      <section class="panel" id="supervisorPanel">
+        <div class="board two-col">
+          <div class="card">
+            <h3>Supervisor Dashboard</h3>
+            <p>Check how many people are inside right now</p>
+
+            <div class="stats">
+              <div class="stat">
+                <span>Total</span>
+                <strong id="supTotalRegistered">0</strong>
+              </div>
+              <div class="stat">
+                <span>Inside</span>
+                <strong id="supInside">0</strong>
+              </div>
+              <div class="stat">
+                <span>Outside</span>
+                <strong id="supOutside">0</strong>
+              </div>
+              <div class="stat">
+                <span>Notices</span>
+                <strong id="supNotices">0</strong>
+              </div>
+            </div>
+
+            <h4>People Inside Library</h4>
+            <div id="insideList" class="list"></div>
+          </div>
+
+          <div class="card">
+            <h3>All Notices</h3>
+            <div id="noticeList" class="list"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
