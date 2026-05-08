@@ -28,11 +28,17 @@ Communication	Fetch API / JSON
 
 Library-system/
 ├── server.js          # The "Brain"
+
 ├── package.json       # Project dependencies & scripts
+
 ├── library.db         # The "Vault"
+
 └── public/            # The "Face"
+   
     ├── index.html     
+    
     ├── style.css      
+    
     └── script.js
 
 
