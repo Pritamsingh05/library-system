@@ -27,10 +27,10 @@ Communication	Fetch API / JSON
 📂 Project Blueprint
 
 Library-system/
-├── server.js          # The "Brain" (API Routes & SQL logic)
+├── server.js          # The "Brain"
 ├── package.json       # Project dependencies & scripts
-├── library.db         # The "Vault" (Your actual data)
-└── public/            # The "Face" (Frontend assets)
+├── library.db         # The "Vault"
+└── public/            # The "Face"
     ├── index.html     
     ├── style.css      
     └── script.js
