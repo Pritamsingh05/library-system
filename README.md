@@ -27,6 +27,7 @@ Communication	Fetch API / JSON
 📂 Project Blueprint
 
 Library-system/
+
 ├── server.js          # The "Brain"
 
 ├── package.json       # Project dependencies & scripts
